@@ -1,0 +1,9 @@
+#!genome-build GRCh37.p13
+#!genome-version GRCh37
+#!genome-date 2009-02
+#!genome-build-accession NCBI:GCA_000001405.14
+#!genebuild-last-updated 2013-09
+1	pseudogene	gene	11869	14412	.	+	.	gene_id "ENSG00000223972"; gene_name "DDX11L1"; gene_source "ensembl_havana"; gene_biotype "pseudogene";
+1	processed_transcript	transcript	11869	14409	.	+	.	gene_id "ENSG00000223972"; transcript_id "ENST00000456328"; gene_name "DDX11L1"; gene_source "ensembl_havana"; gene_biotype "pseudogene"; transcript_name "DDX11L1-002"; transcript_source "havana"; test_value "1.3"
+1	transcribed_unprocessed_pseudogene	exon	13661	14409	.	+	.	gene_id "ENSG00000223972"; transcript_id "ENST00000518655"; exon_number "4"; gene_name "DDX11L1"; gene_source "ensembl_havana"; gene_biotype "pseudogene"; transcript_name "DDX11L1-202"; transcript_source "ensembl"; exon_id "ENSE00002303382"
+1	transcribed_unprocessed_pseudogene	transcript	12010	13670	.	+	.	gene_id "ENSG00000223972"; transcript_id "ENST00000450305"; gene_name "DDX11L1"; gene_source "ensembl_havana"; gene_biotype "pseudogene"; transcript_name "DDX11L1-001"; transcript_source "havana";;test_value "1.2"
