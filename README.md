@@ -8,9 +8,10 @@ The GTF Format is implemented according to this documentation:
 ![travis](https://travis-ci.org/nRo/DataFrame-GTF.svg?branch=master)
 [![codecov](https://codecov.io/gh/nRo/DataFrame-GTF/branch/master/graph/badge.svg)](https://codecov.io/gh/nRo/DataFrame-GTF)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/44456bac7a024675b07188b46d8d94ed)](https://www.codacy.com/app/nRo/DataFrame-GTF?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nRo/DataFrame-GTF&amp;utm_campaign=Badge_Grade)
+
 Documentation
 -------
-[![Javadocs](http://javadoc.io/badge/de.unknownreality/dataframe-gtf.svg?color=blue)](http://javadoc.io/doc/de.unknownreality/dataframe)
+[![Javadocs](http://javadoc.io/badge/de.unknownreality/dataframe-gtf.svg?color=blue)](http://javadoc.io/doc/de.unknownreality/dataframe-gtf)
 
 Install
 -------
