@@ -30,18 +30,24 @@ import de.unknownreality.dataframe.common.header.BasicTypeHeader;
  * Created by Alex on 19.05.2017.
  */
 public class GTFHeader extends BasicTypeHeader<String> {
-
+    /**
+     * Returns the column index of a GTF field within the DataFrame
+     * @param field gtf field
+     * @return column index
+     */
     public int getIndex(GTFField field) {
         return super.getIndex(field.name);
     }
 
+    /**
+     * Returns the type of a GTF field within the DataFrame
+     * @param field gtf field
+     * @return column type
+     */
     public Class<? extends Comparable> getType(GTFField field) {
         return super.getType(field.name);
     }
 
-    public boolean isGTFField(int index){
-        return GTFField.fromString(get(index)) != null;
-    }
 
     @Override
     public GTFHeader copy() {

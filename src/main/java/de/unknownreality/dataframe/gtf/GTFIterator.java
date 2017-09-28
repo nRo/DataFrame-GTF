@@ -27,6 +27,7 @@ package de.unknownreality.dataframe.gtf;
 import de.unknownreality.dataframe.DataFrameColumn;
 import de.unknownreality.dataframe.DataFrameException;
 import de.unknownreality.dataframe.DataFrameRuntimeException;
+import de.unknownreality.dataframe.Values;
 import de.unknownreality.dataframe.csv.CSVIterator;
 import de.unknownreality.dataframe.io.BufferedStreamIterator;
 import de.unknownreality.dataframe.io.ColumnInformation;
@@ -137,7 +138,7 @@ public class GTFIterator extends BufferedStreamIterator<GTFRow> implements DataI
                 if(settings.isAddAllGTFFields() || gtfFieldIndices.contains(i)){
                     String val = values[i];
                     if(".".equals(val) || "".equals(val)){
-                        rowValues[i] = null;
+                        rowValues[idx++] = Values.NA.toString();
                         continue;
                     }
                     rowValues[idx++] = values[i];
@@ -163,7 +164,7 @@ public class GTFIterator extends BufferedStreamIterator<GTFRow> implements DataI
             }
             for(String missingAttribute : missingAttributes){
                 attrIdx = attributeIndexMap.get(missingAttribute);
-                rowValues[attrIdx] = null;
+                rowValues[attrIdx] = Values.NA.toString();
 
             }
             return new GTFRow(header, rowValues, rowNumber++);

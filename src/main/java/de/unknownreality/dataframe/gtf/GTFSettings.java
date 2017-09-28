@@ -58,15 +58,29 @@ public class GTFSettings implements FormatSettings {
         return attributes;
     }
 
+    /**
+     * Adds a GTF field. If no GTF field is specified, all fields will be added to the resulting dataframe
+     * @param field gtf field
+     */
     public void addGTFField(GTFField field){
         gtfFields.add(field);
         addAllGTFFields = false;
     }
 
+    /**
+     * Adds an attribute field with specified column type.
+     * @param name attribute name
+     * @param column attribute column
+     */
     public void addAttribute(String name, DataFrameColumn column){
         attributes.put(name,column);
     }
 
+    /**
+     * Adds an attribute field with specified column type.
+     * @param name attribute name
+     * @param columnClass attribute column type
+     */
     public void addAttribute(String name, Class<? extends  DataFrameColumn> columnClass){
         DataFrameColumn column;
         try {
@@ -78,11 +92,20 @@ public class GTFSettings implements FormatSettings {
         addAttribute(name, column);
     }
 
+    /**
+     * Adds a <tt>String</tt> attribute field.
+     * @param name attribute name
+     */
     public void addAttribute(String name){
         addAttribute(name, new StringColumn());
     }
 
 
+    /**
+     * Adds a column to the resulting dataframe. If the column name matches a GTF field, the field is added.
+     * Otherwise an attribute is added.
+     * @param name column name
+x     */
     public void addColumn(String name){
         GTFField field;
         if((field = GTFField.fromString(name)) != null){

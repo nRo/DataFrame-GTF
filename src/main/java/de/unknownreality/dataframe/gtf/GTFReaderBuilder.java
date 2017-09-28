@@ -41,26 +41,54 @@ public class GTFReaderBuilder implements ReaderBuilder<GTFRow, GTFReader> {
     private GTFSettings settings = new GTFSettings();
 
 
+    /**
+     * Adds a GTF field to the reader. If no GTF field is specified, all fields will be added to the dataframe
+     * @param field gtf field
+     * @return <tt>self</tt> for method chaining
+     */
     public GTFReaderBuilder withGTFField(GTFField field){
         settings.addGTFField(field);
         return this;
     }
 
+    /**
+     * Adds an attribute field with specified column type  to the reader.
+     * @param name attribute name
+     * @param column attribute column
+     * @return <tt>self</tt> for method chaining
+     */
     public GTFReaderBuilder withAttribute(String name, DataFrameColumn column){
         settings.addAttribute(name, column);
         return this;
     }
 
+    /**
+     * Adds an attribute field with specified column type  to the reader.
+     * @param name attribute name
+     * @param columnClass attribute column type
+     * @return <tt>self</tt> for method chaining
+     */
     public GTFReaderBuilder withAttribute(String name, Class<? extends  DataFrameColumn> columnClass){
         settings.addAttribute(name, columnClass);
         return this;
     }
 
+    /**
+     * Adds a <tt>String</tt> attribute field to the reader.
+     * @param name attribute name
+     * @return <tt>self</tt> for method chaining
+     */
     public GTFReaderBuilder withAttribute(String name){
         settings.addAttribute(name);
         return this;
     }
 
+    /**
+     * Adds a column to the reader. If the column name matches a GTF field, the field is added.
+     * Otherwise an attribute is added to the reader
+     * @param name column name
+     * @return <tt>self</tt> for method chaining
+     */
     public GTFReaderBuilder withColumn(String name){
         settings.addColumn(name);
         return this;

@@ -27,7 +27,8 @@ package de.unknownreality.dataframe.gtf;
 import de.unknownreality.dataframe.io.*;
 
 /**
- * Created by Alex on 17.06.2017.
+ * Created by Alex on 19.05.2017.
+ * The GTF Format is implemented according to this documentation <a href="http://www.ensembl.org/info/website/upload/gff.html">http://www.ensembl.org/info/website/upload/gff.html</a>
  */
 public class GTFFormat implements FileFormat, ReadFormat, WriteFormat {
     @Override

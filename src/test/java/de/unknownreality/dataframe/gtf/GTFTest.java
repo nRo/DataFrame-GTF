@@ -7,6 +7,7 @@ import de.unknownreality.dataframe.meta.DataFrameMeta;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.io.File;
 import java.io.StringWriter;
 
 /**
@@ -16,11 +17,13 @@ public class GTFTest {
 
     @Test
     public void readerTest(){
+
         GTFReader gtfReader = GTFReaderBuilder.create()
                 .build();
         DataFrame dataFrame = DataFrame.load(
                 "test.gtf",getClass().getClassLoader(),
                 gtfReader);
+
 
         Assert.assertEquals(4, dataFrame.size());
         Assert.assertEquals(GTFField.values().length, dataFrame.getColumns().size());

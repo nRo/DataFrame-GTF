@@ -36,6 +36,7 @@ import java.util.stream.Collectors;
 
 /**
  * Created by Alex on 19.05.2017.
+ * GTF fields are defined according to this documentation <a href="http://www.ensembl.org/info/website/upload/gff.html">http://www.ensembl.org/info/website/upload/gff.html</a>
  */
 public enum GTFField {
     SEQNAME("seqname", 0, new StringColumn("seqname")), SOURCE("source", 1, new StringColumn("source")),
@@ -54,26 +55,49 @@ public enum GTFField {
         this.name = name;
         this.column = column;
     }
+
+    /**
+     * set containing all names of GTF fields
+     */
     public static final Set<String> GTF_FIELD_NAMES =  Arrays.stream(GTFField.values())
             .map(GTFField::getName)
             .collect(Collectors.toSet());
 
 
+    /**
+     * returns true if the name matches a GTF field
+     * @param name input name
+     * @return if name of gtf field
+     */
     public static boolean isGTFField(String name){
         return GTF_FIELD_NAMES.contains(name);
     }
+
     public int getIndex() {
         return index;
     }
 
+    /**
+     * name of GTF field
+     * @return field name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Column type of GTF field
+     * @return column type
+     */
     public Class<? extends DataFrameColumn> getColType() {
         return column.getClass();
     }
 
+    /**
+     * Parses an input string to the type specified by the respective column
+     * @param value input string
+     * @return parsed value
+     */
     public Comparable parseValue(String value) {
         try {
             return (Comparable) column.getParser().parse(value);
@@ -86,6 +110,11 @@ public enum GTFField {
         return name;
     }
 
+    /**
+     * Returns the GTF field matching an input string
+     * @param str input string
+     * @return matching GTF field
+     */
     public static GTFField fromString(String str) {
         str = str.toLowerCase();
         for (GTFField c : values()) {

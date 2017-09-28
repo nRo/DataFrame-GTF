@@ -27,7 +27,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class GTFUtil {
-
+    /**
+     * Splits the attributes part of a row in a GTF file into separate parts.
+     * <tt>gene_id "ENSG00000223972"; gene_name "DDX11L1";"</tt> -> <code>["gene_id","ENSG00000223972","gene_name","DDX11L1"]</code>
+     * Escaping (<tt>gene_name "xx\"xx";</tt>) and quotations (<tt>gene_name "xx;xx";</tt>) are considered.
+     * @param input attributes string
+     * @return array containing all attribute parts
+     */
     public static String[] splitAttributes(String input) {
         boolean inQuotation = false;
         boolean inDoubleQuotation = false;

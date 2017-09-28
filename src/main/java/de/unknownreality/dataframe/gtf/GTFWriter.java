@@ -46,6 +46,13 @@ public class GTFWriter extends DataWriter {
     }
 
 
+    /**
+     * Writes a GTF file based on an input {@link DataContainer}.
+     * GTF fields are always added. <tt>null</tt> or <tt>NA</tt> are represented as '.'.
+     * All columns not matching GTF fields are added as attributes
+     * @param bufferedWriter target writer
+     * @param dataContainer input container
+     */
     @Override
     public void write(BufferedWriter bufferedWriter, DataContainer<?, ?> dataContainer) {
         try {
@@ -102,6 +109,12 @@ public class GTFWriter extends DataWriter {
         }
     }
 
+    /**
+     * This method is used during the creation of meta files.
+     * All settings that should be added to the meta file considering an input dataframe are returned.
+     * @param dataFrame input dataframe
+     * @return settings written to the meta file
+     */
     @Override
     public Map<String, String> getSettings(DataFrame dataFrame) {
         Map<String, String> attributes = new HashMap<>();
@@ -115,6 +128,12 @@ public class GTFWriter extends DataWriter {
         return attributes;
     }
 
+    /**
+     * This method is used during the creation of meta files.
+     * All columns that should be added to the meta file considering an input dataframe are returned.
+     * @param dataFrame input dataframe
+     * @return columns written to the meta file
+     */
     @Override
     public List<DataFrameColumn> getMetaColumns(DataFrame dataFrame) {
         List<DataFrameColumn> columns = new ArrayList<>();
