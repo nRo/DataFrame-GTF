@@ -25,6 +25,7 @@
 package de.unknownreality.dataframe.gtf;
 
 import de.unknownreality.dataframe.DataFrameColumn;
+import de.unknownreality.dataframe.filter.FilterPredicate;
 import de.unknownreality.dataframe.io.ReaderBuilder;
 
 import java.util.Map;
@@ -93,6 +94,17 @@ public class GTFReaderBuilder implements ReaderBuilder<GTFRow, GTFReader> {
         settings.addColumn(name);
         return this;
     }
+
+    public GTFReaderBuilder withPreFilter(String predicate){
+        settings.setPreFilter(FilterPredicate.compile(predicate));
+        return this;
+    }
+
+    public GTFReaderBuilder withPreFilter(FilterPredicate predicate){
+        settings.setPreFilter(predicate);
+        return this;
+    }
+
 
     @Override
     public GTFReader build() {

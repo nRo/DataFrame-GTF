@@ -27,6 +27,7 @@ package de.unknownreality.dataframe.gtf;
 import de.unknownreality.dataframe.DataFrameColumn;
 import de.unknownreality.dataframe.DataFrameRuntimeException;
 import de.unknownreality.dataframe.column.StringColumn;
+import de.unknownreality.dataframe.filter.FilterPredicate;
 import de.unknownreality.dataframe.io.FormatSettings;
 
 import java.util.ArrayList;
@@ -56,6 +57,17 @@ public class GTFSettings implements FormatSettings {
 
     public Map<String, DataFrameColumn> getAttributes() {
         return attributes;
+    }
+
+    private FilterPredicate preFilter = null;
+
+
+    public FilterPredicate getPreFilter() {
+        return preFilter;
+    }
+
+    public void setPreFilter(FilterPredicate preFilter) {
+        this.preFilter = preFilter;
     }
 
     /**

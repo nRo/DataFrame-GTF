@@ -29,6 +29,7 @@ import de.unknownreality.dataframe.DataFrameException;
 import de.unknownreality.dataframe.DataFrameRuntimeException;
 import de.unknownreality.dataframe.Values;
 import de.unknownreality.dataframe.csv.CSVIterator;
+import de.unknownreality.dataframe.filter.FilterPredicate;
 import de.unknownreality.dataframe.io.BufferedStreamIterator;
 import de.unknownreality.dataframe.io.ColumnInformation;
 import de.unknownreality.dataframe.io.DataIterator;
@@ -55,11 +56,13 @@ public class GTFIterator extends BufferedStreamIterator<GTFRow> implements DataI
     private GTFRow bufferedRow = null;
     private Set<Integer> gtfFieldIndices = new HashSet<>();
     private Map<String,Integer> attributeIndexMap = new HashMap<>();
+    private FilterPredicate filter = null;
 
     @SuppressWarnings("unchecked")
     public GTFIterator(BufferedReader reader, GTFSettings settings) {
         super(reader);
         this.settings = settings;
+        this.filter = settings.getPreFilter();
         List<GTFField> gtfFields;
         if(settings.isAddAllGTFFields()){
             gtfFields = Arrays.asList(GTFField.values());
@@ -167,7 +170,14 @@ public class GTFIterator extends BufferedStreamIterator<GTFRow> implements DataI
                 rowValues[attrIdx] = Values.NA.toString();
 
             }
+            if(filter != null){
+                GTFRow row = new GTFRow(header, rowValues, rowNumber++);
+                if(!filter.valid(row)){
+                    return getNext();
+                }
+            }
             return new GTFRow(header, rowValues, rowNumber++);
+
 
         } catch (Exception e) {
             log.error("error reading file: {}:{}", lineNumber, e);
