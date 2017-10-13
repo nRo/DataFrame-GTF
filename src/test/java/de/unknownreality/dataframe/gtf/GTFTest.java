@@ -78,6 +78,7 @@ public class GTFTest {
     public void writerTest(){
         GTFReader gtfReader = GTFReaderBuilder.create()
                 .withAttribute("gene_id")
+                .withPreFilter("start > '11869'")
                 .build();
         DataFrame dataFrame = DataFrame.load(
                 "test.gtf",getClass().getClassLoader(),
@@ -95,7 +96,7 @@ public class GTFTest {
             Assert.assertEquals("gene_id",attrParts[0]);
             Assert.assertEquals("ENSG00000223972",attrParts[1]);
         }
-        Assert.assertEquals(4, lines.length);
+        Assert.assertEquals(2, lines.length);
 
     }
 
