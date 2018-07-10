@@ -27,7 +27,7 @@ Add this to you pom.xml
     <dependency>
         <groupId>de.unknownreality</groupId>
         <artifactId>dataframe-gtf</artifactId>
-        <version>0.2.1</version>
+        <version>0.2.4</version>
     </dependency>
 ...
 </dependencies>
@@ -55,7 +55,7 @@ To build the library from sources:
     <dependency>
         <groupId>de.unknownreality</groupId>
         <artifactId>dataframe-gtf</artifactId>
-        <version>0.2.1-SNAPSHOT</version>
+        <version>0.2.4-SNAPSHOT</version>
     </dependency>
 ...
 </dependencies>
